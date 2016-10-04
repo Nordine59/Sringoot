@@ -5,13 +5,35 @@
  */
 package streaming.dao;
 
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import streaming.entity.Personne;
 
 /**
  *
- * @author ETY
+ * @author admin
  */
-public interface PersonneDAO extends CrudRepository<Personne, Long>{
-    
+
+@Repository
+public class PersonneDAO {
+
+    @PersistenceContext
+    private EntityManager em;
+
+    @Transactional
+    public void ajouter(Personne personne) {
+
+        em.persist(personne);
+
+    }
+
+    public List<Personne> lister() {
+
+        return em.createQuery("SELECT p  FROM Personne p ORDER BY p.id ").getResultList();
+
+    }
+
 }

@@ -7,12 +7,14 @@ package streaming.service;
 
 import java.io.Serializable;
 import org.springframework.data.repository.CrudRepository;
-import streaming.entity.Personne;
+import streaming.entity.Serie;
 
 /**
  *
  * @author admin
  */
-public interface PersonneService extends CrudRepository<Personne, Long> {
+public interface SerieServiceCRUD extends CrudRepository<Serie, Long>{
+    
+    
     
 }

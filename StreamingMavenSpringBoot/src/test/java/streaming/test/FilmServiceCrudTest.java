@@ -13,7 +13,7 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import streaming.entity.Film;
 import streaming.spring.SpringConfig;
-import streaming.service.FilmService;
+import streaming.service.FilmServiceCRUD;
 
 /**
  *
@@ -21,10 +21,10 @@ import streaming.service.FilmService;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = SpringConfig.class)
-public class FilmDAOTest {
+public class FilmServiceCrudTest {
 
     @Autowired
-    private FilmService dao;
+    private FilmServiceCRUD dao;
 
     @Before
     public void avant() {

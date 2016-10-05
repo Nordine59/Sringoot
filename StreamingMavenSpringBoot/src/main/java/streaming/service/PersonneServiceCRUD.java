@@ -5,13 +5,18 @@
  */
 package streaming.service;
 
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
-import streaming.entity.Lien;
+import streaming.entity.Personne;
 
 /**
  *
  * @author admin
  */
-public interface LienService extends CrudRepository<Lien, Long>{
+public interface PersonneServiceCRUD extends CrudRepository<Personne, Long> {
     
+    
+    public Personne findOneByPrenomAndNom (String p, String n);
+    
+    public List<Personne> findAllByprenomAndNom (String p, String n);
 }

@@ -5,14 +5,15 @@
  */
 package streaming.service;
 
-import java.io.Serializable;
 import org.springframework.data.repository.CrudRepository;
-import streaming.entity.Saison;
+import streaming.entity.Episode;
 
 /**
  *
  * @author admin
  */
-public interface SaisonService extends CrudRepository<Saison, Long>{
+public interface EpisodeServiceCRUD extends CrudRepository<Episode, Long> {
+    
+    
     
 }

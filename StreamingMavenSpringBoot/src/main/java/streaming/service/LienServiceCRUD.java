@@ -5,14 +5,13 @@
  */
 package streaming.service;
 
-import java.io.Serializable;
 import org.springframework.data.repository.CrudRepository;
-import streaming.entity.Serie;
+import streaming.entity.Lien;
 
 /**
  *
  * @author admin
  */
-public interface SerieService extends CrudRepository<Serie, Long>{
+public interface LienServiceCRUD extends CrudRepository<Lien, Long>{
     
 }

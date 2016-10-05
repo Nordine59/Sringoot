@@ -11,8 +11,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import streaming.dao.PaysDao;
 import streaming.entity.Pays;
+import streaming.service.PaysService;
 
 /**
  *
@@ -24,7 +24,7 @@ import streaming.entity.Pays;
 public class PaysDAOTest {
     
     @Autowired
-    private PaysDao dao;
+    private PaysService dao;
     
     
     @Test

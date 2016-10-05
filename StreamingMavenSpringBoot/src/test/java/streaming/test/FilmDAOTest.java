@@ -5,26 +5,39 @@
  */
 package streaming.test;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import streaming.dao.FilmDAO;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import streaming.entity.Film;
+import streaming.spring.SpringConfig;
+import streaming.service.FilmService;
 
 /**
  *
  * @author admin
  */
-
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(classes = SpringConfig.class)
 public class FilmDAOTest {
-    
-    
+
     @Autowired
-    private FilmDAO dao;
-    
-    @Test
-    public void toutSupprimer(){
-        
+    private FilmService dao;
+
+    @Before
+    public void avant() {
+
         dao.deleteAll();
     }
-    
-    
+
+    @Test
+    public void ajouter2Films() {
+
+        dao.save(new Film());
+        dao.save(new Film());
+
+    }
+
 }

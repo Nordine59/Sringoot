@@ -5,12 +5,24 @@
  */
 package streaming.test;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import org.dbunit.DatabaseUnitException;
+import org.dbunit.database.DatabaseConnection;
+import org.dbunit.database.IDatabaseConnection;
+import org.dbunit.dataset.xml.FlatXmlDataSet;
+import org.dbunit.dataset.xml.FlatXmlProducer;
+import org.dbunit.operation.DatabaseOperation;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.xml.sax.InputSource;
 import streaming.entity.Film;
 import streaming.spring.SpringConfig;
 import streaming.service.FilmServiceCRUD;
@@ -24,20 +36,26 @@ import streaming.service.FilmServiceCRUD;
 public class FilmServiceCrudTest {
 
     @Autowired
-    private FilmServiceCRUD dao;
+    private FilmServiceCRUD service;
 
     @Before
-    public void avant() {
+    public void avant() throws ClassNotFoundException, SQLException, DatabaseUnitException, FileNotFoundException {
 
-        dao.deleteAll();
+        // Connexion DB note : a taper ds nos before
+        Class driverClass = Class.forName("org.apache.derby.jdbc.ClientDriver");
+        Connection jdbcConnection = DriverManager.getConnection(
+                "jdbc:derby://localhost:1527/sample", "app", "app");
+        IDatabaseConnection connection = new DatabaseConnection(jdbcConnection);
+
+        // Import
+        FlatXmlDataSet dataSet = new FlatXmlDataSet(new FlatXmlProducer(new InputSource(new FileInputStream("donnees.xml"))));
+        DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
+
     }
-
     @Test
-    public void ajouter2Films() {
-
-        dao.save(new Film());
-        dao.save(new Film());
-
+    public void test(){
+        
+        
     }
 
 }

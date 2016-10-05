@@ -28,7 +28,7 @@ public class ImportDB {
     @Test
     public void test() throws ClassNotFoundException, SQLException, DatabaseUnitException, FileNotFoundException {
 
-        // Connexion DB
+        // Connexion DB note : a taper ds nos before
         Class driverClass = Class.forName("org.apache.derby.jdbc.ClientDriver");
         Connection jdbcConnection = DriverManager.getConnection(
                 "jdbc:derby://localhost:1527/sample", "app", "app");
